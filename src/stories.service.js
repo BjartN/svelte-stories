@@ -1,6 +1,6 @@
 import { storiesStore } from './store';
 import { guid } from '@datorama/akita';
-import { groupBy, groupByArray } from './infrastructure.js'
+import { groupBy, groupByArray } from './array-utils.js'
 
 export async function readStories() {
     const stories = await getData();

@@ -2,13 +2,7 @@
 
 import { createEntityStore } from '@datorama/akita';
 
-const initialState = [{
-    id: 1,
-    color: 'red',
-    title: 'Initial State',
-    tasks: []
-}];
-
-export const storiesStore = createEntityStore(initialState, {
+//create store with initial state and name
+export const storiesStore = createEntityStore([], {
     name: "stories"
 });
