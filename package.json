@@ -16,7 +16,6 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "@datorama/akita": "^4.17.4",
     "rxjs": "^6.5.4",
     "sirv-cli": "^0.4.4"
   }

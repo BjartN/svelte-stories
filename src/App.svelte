@@ -1,7 +1,6 @@
 <script>
   import List from "./List.svelte";
-  import { readStories } from "./stories.service.js";
-  import { storiesQuery } from "./stories.query.js";
+  import { getStoriesAsync } from "./stories.service.js";
   import { Router } from "./router.js";
   import { storyStore } from "./stores";
 
@@ -26,7 +25,7 @@
 
   r.init();
 
-  readStories();
+  let columnsPromise = getStoriesAsync();
 </script>
 
 <style>
@@ -68,9 +67,11 @@
   <nav class="app">{name}</nav>
   {#if page == 'root' || page == 'story'}
     <div class="lists">
-      {#each $storiesQuery as column (column.id)}
-        <List {...column} />
-      {/each}
+      {#await columnsPromise then columns}
+        {#each columns as column (column.id)}
+          <List {...column} />
+        {/each}
+      {/await}
     </div>
   {:else if page == 'project'}
     <p>Project</p>
