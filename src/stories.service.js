@@ -1,4 +1,4 @@
-import { groupBy, groupByArray } from './array-utils.js'
+import { groupBy, groupByArray } from './libs/array-utils.js'
 
 export async function getStoriesAsync() {
     let url = "http://localhost/backend/api/stories/leftmenu?toDateString=2020-01-18T13:00:00+01:00&fromDateString=2019-2-18T13:00:00+01:00&includeProjects=true";
