@@ -1,6 +1,6 @@
 <script>
   import Task from "./Task.svelte";
-
+  import { moveStore } from "./services/stores";
   export let id = -1;
   export let color = "green";
   export let title = "Default";
@@ -12,20 +12,24 @@
     e.preventDefault();
     dragOver = false;
 
-    console.log(`Dropped on ${id}`);
+    let d = JSON.parse(e.dataTransfer.getData("application/sveltz"));
+
+    //console.log(`Dropped on ${id}. Story is ${d.storyId}`);
+
+    $moveStore = { storyId: d.storyId, columnId: id };
   }
 
   function onDragOver(e) {
     e.preventDefault();
 
     if (!dragOver) dragOver = true;
-    console.log(`Dragged over ${id}`);
+    //console.log(`Dragged over ${id}`);
   }
 
   function onDragLeave(e) {
     e.preventDefault();
     dragOver = false;
-    console.log(`Dragged exit ${id}`);
+    //console.log(`Dragged exit ${id}`);
   }
 </script>
 

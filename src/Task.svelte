@@ -4,6 +4,7 @@
 
   export let id = -1;
   export let text = "";
+  export let createdBy = undefined;
   let showModal = false;
 
   storyStore.subscribe(storyId => {
@@ -20,7 +21,7 @@
     e.dataTransfer.setData(
       "application/sveltz",
       JSON.stringify({
-        id: id
+        storyId: id
       })
     );
 
@@ -37,6 +38,19 @@
 </script>
 
 <style>
+  li {
+    background-color: white;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+    color: #222;
+
+    text-indent: 0;
+    list-style-type: none;
+    font-size: 10px;
+    display: block;
+  }
+
   div {
     border-radius: 2px;
     padding: 3px;
@@ -44,16 +58,13 @@
     display: inline-block;
   }
 
-  li {
-    background-color: white;
+  .created-by {
+    color: #bbb;
+  }
+  button {
     border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
-    color: #222;
-
-    text-indent: 0;
-    list-style-type: none;
-    display: block;
+    margin: 0;
+    height: 20px;
   }
 
   .modal {
@@ -61,31 +72,21 @@
     font-size: 1em;
   }
 
-  .id {
-    background-color: #bbb;
-    color: #333;
-    border-radius: 5px;
-  }
-
-  button {
-    background-color: #444;
-    color: white;
-    border-radius: 5px;
-    font-size: 10px;
-  }
-
-  .button-wrapper {
+  .footer {
     display: flex;
-    justify-content: flex-end;
-    width: 100%;
+    justify-content: space-between;
   }
 </style>
 
 <li on:dragstart={onDragStart} draggable="true">
-  <div class="id">{id}</div>
   {text}
-  <div class="button-wrapper">
-    <button on:click={onShowModal}>Show</button>
+  <div class="footer">
+    {#if createdBy}
+      <div class="created-by">{id} {createdBy}</div>
+    {:else}
+      <div />
+    {/if}
+    <button on:click={onShowModal}>...</button>
   </div>
   {#if showModal}
     <Modal on:close={onHideModal}>

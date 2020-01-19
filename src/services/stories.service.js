@@ -19,7 +19,7 @@ export async function getStoriesFake() {
     return await Promise.resolve([
         {
             id: 1, color: 'red', title: 'News', tasks: [
-                { id: 1001, text: 'Harry and Meghan drop royal duties and HRH titles' },
+                { id: 1001, createdBy: 'Bjarte Djuvik Næss', text: 'Harry and Meghan drop royal duties and HRH titles' },
                 { id: 2002, text: 'Rare olive ridley turtle found injured off Seaford beach' },
                 { id: 3003, text: 'Canada snowstorms: State of emergency declared' },
             ]
@@ -59,7 +59,7 @@ function mapData(stories) {
             color: departmentIdx[x.key][0].c,
             title: departmentIdx[x.key][0].t,
             tasks: x.value.map(y => {
-                return { id: y.oid, text: y.t };
+                return { id: y.oid, text: y.t, createdBy: y.cbn };
             })
         };
     });

@@ -1,4 +1,5 @@
 export class Router {
+    //or maybe use https://github.com/EmilTholin/svelte-routing
 
     constructor() {
         this.routes = [];
