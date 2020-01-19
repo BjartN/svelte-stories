@@ -1,4 +1,4 @@
-import { groupBy, groupByArray } from './libs/array-utils.js'
+import { groupBy, groupByArray } from '../libs/array-utils.js'
 
 export async function getStoriesAsync(fake) {
     if (fake)

@@ -1,6 +1,6 @@
 <script>
   import Modal from "./Modal.svelte";
-  import { storyStore } from "./stores";
+  import { storyStore } from "./services/stores";
 
   export let id = -1;
   export let text = "";

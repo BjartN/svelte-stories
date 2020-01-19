@@ -1,8 +1,8 @@
 <script>
   import List from "./List.svelte";
-  import { getStoriesAsync } from "./stories.service.js";
+  import { getStoriesAsync } from "./services/stories.service.js";
   import { Router } from "./libs/router.js";
-  import { storyStore } from "./stores";
+  import { storyStore } from "./services/stores";
 
   export let name;
   let page;
@@ -64,7 +64,7 @@
 <svelte:options immutable />
 <svelte:window on:hashchange={e => r.onRouteChanged(e)} />
 <main>
-  <nav class="app">{name} !</nav>
+  <nav class="app">{name}</nav>
   {#if page == 'root' || page == 'story'}
     <div class="lists">
       {#await columnsPromise then columns}
