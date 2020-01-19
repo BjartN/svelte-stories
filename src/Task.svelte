@@ -7,7 +7,9 @@
   let showModal = false;
 
   storyStore.subscribe(storyId => {
-    if (storyId === undefined) return;
+    if (storyId === undefined) {
+      showModal = false;
+    }
 
     if (storyId == id.toString()) {
       showModal = true;
@@ -23,6 +25,14 @@
     );
 
     console.log(`Dragging ${id}`);
+  }
+
+  function onShowModal() {
+    window.location.hash = `#story/${id}`;
+  }
+
+  function onHideModal() {
+    window.location.hash = `#story`;
   }
 </script>
 
@@ -68,10 +78,10 @@
 <li on:dragstart={onDragStart} draggable="true">
   <div class="id">{id}</div>
   <div class="text">{text}</div>
-  <button on:click={() => (showModal = true)}>Show</button>
+  <button on:click={onShowModal}>Show</button>
   {#if showModal}
-    <Modal on:close={() => (showModal = false)}>
-      <div class="modal">You are now looking at "{text}"</div>
+    <Modal on:close={onHideModal}>
+      <div class="modal">You are now looking at "{text} ({id})"</div>
     </Modal>
   {/if}
 </li>

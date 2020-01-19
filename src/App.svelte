@@ -16,6 +16,7 @@
   r.get("/story", () => {
     console.log("Matched route story");
     pageStore.set("story");
+    storyStore.set(undefined);
   });
   r.get("/story/{storyId}", p => {
     console.log(`Matched route story ${p.storyId}`);

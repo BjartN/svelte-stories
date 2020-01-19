@@ -28,13 +28,6 @@ export class Router {
         this.callCurrentRoute();
     }
 
-    parser() {
-        let route = "a/b/c/{d}";
-        let path = "a/b/c/1";
-
-        this.parseParmeters(route, path);
-    }
-
     parseParmeters(route, path) {
         let routeSegments = route.split('/');
         let pathSegments = path.split('/');
@@ -57,8 +50,6 @@ export class Router {
     }
 
     init() {
-        this.parser();
-
         this.callCurrentRoute();
     }
 
