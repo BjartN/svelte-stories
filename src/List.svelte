@@ -98,5 +98,5 @@
       <Task {...task} />
     {/each}
   </ul>
-  <footer>Add a card...</footer>
+  <footer>Add a story...</footer>
 </div>

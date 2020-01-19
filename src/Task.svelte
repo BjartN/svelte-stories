@@ -1,9 +1,18 @@
 <script>
   import Modal from "./Modal.svelte";
+  import { storyStore } from "./stores";
 
   export let id = -1;
   export let text = "";
   let showModal = false;
+
+  storyStore.subscribe(storyId => {
+    if (storyId === undefined) return;
+
+    if (storyId == id.toString()) {
+      showModal = true;
+    }
+  });
 
   function onDragStart(e) {
     e.dataTransfer.setData(
