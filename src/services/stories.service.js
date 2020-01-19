@@ -30,6 +30,20 @@ export async function getStoriesFake() {
                 { id: 5005, text: 'Rare olive ridley turtle found injured off Seaford beach' },
                 { id: 6006, text: 'Canada snowstorms: State of emergency declared' },
             ]
+        },
+        {
+            id: 2, color: 'pink', title: 'History', tasks: [
+                { id: 4004, text: 'Mindfullness in the storm' },
+                { id: 5005, text: 'Rare olive ridley turtle found injured off Seaford beach' },
+                { id: 6006, text: 'Canada snowstorms: State of emergency declared' },
+            ]
+        },
+        {
+            id: 2, color: 'yellow', title: 'Documentaries', tasks: [
+                { id: 4004, text: 'Mindfullness in the storm' },
+                { id: 5005, text: 'Rare olive ridley turtle found injured off Seaford beach' },
+                { id: 6006, text: 'Canada snowstorms: State of emergency declared' },
+            ]
         }
     ]);
 

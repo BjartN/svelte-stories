@@ -62,8 +62,8 @@
   }
 
   .id {
-    background-color: #666;
-    color: rgb(255, 255, 255);
+    background-color: #bbb;
+    color: #333;
     border-radius: 5px;
   }
 
@@ -73,12 +73,20 @@
     border-radius: 5px;
     font-size: 10px;
   }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
 </style>
 
 <li on:dragstart={onDragStart} draggable="true">
   <div class="id">{id}</div>
-  <div class="text">{text}</div>
-  <button on:click={onShowModal}>Show</button>
+  {text}
+  <div class="button-wrapper">
+    <button on:click={onShowModal}>Show</button>
+  </div>
   {#if showModal}
     <Modal on:close={onHideModal}>
       <div class="modal">You are now looking at "{text} ({id})"</div>
