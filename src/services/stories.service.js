@@ -34,13 +34,13 @@ export async function getStoriesFake() {
         {
             id: 2, color: 'pink', title: 'History', tasks: [
                 { id: 4004, text: 'Mindfullness in the storm' },
-                { id: 5005, text: 'Rare olive ridley turtle found injured off Seaford beach' },
-                { id: 6006, text: 'Canada snowstorms: State of emergency declared' },
+                { id: 5005, text: 'Warriors Without Hope' },
+                { id: 6006, text: 'Humans And Robots' },
             ]
         },
         {
             id: 2, color: 'yellow', title: 'Documentaries', tasks: [
-                { id: 4004, text: 'Mindfullness in the storm' },
+                { id: 4004, text: 'Completion Of History' },
                 { id: 5005, text: 'Rare olive ridley turtle found injured off Seaford beach' },
                 { id: 6006, text: 'Canada snowstorms: State of emergency declared' },
             ]
