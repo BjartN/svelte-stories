@@ -3,34 +3,25 @@
   import { readStories } from "./stories.service.js";
   import { storiesQuery } from "./stories.query.js";
   import { Router } from "./router.js";
-  import { pageStore } from "./stores";
   import { storyStore } from "./stores";
 
   export let name;
+  let page;
 
   let r = new Router();
   r.get("/", () => {
-    console.log("Matched route main");
-    pageStore.set("main");
+    page = "root";
   });
   r.get("/story", () => {
-    console.log("Matched route story");
-    pageStore.set("story");
+    page = "story";
     storyStore.set(undefined);
   });
   r.get("/story/{storyId}", p => {
-    console.log(`Matched route story ${p.storyId}`);
-    pageStore.set("story");
+    page = "story";
     storyStore.set(p.storyId);
   });
   r.get("/project", () => {
-    console.log("Matched route story");
-    pageStore.set("project");
-  });
-
-  let page_value;
-  const unsubscribe = pageStore.subscribe(value => {
-    page_value = value;
+    page = "project";
   });
 
   r.init();
@@ -73,16 +64,15 @@
 
 <svelte:options immutable />
 <svelte:window on:hashchange={e => r.onRouteChanged(e)} />
-
-{#if page_value == 'main' || page_value == 'story'}
-  <main>
-    <nav class="app">{name}</nav>
+<main>
+  <nav class="app">{name}</nav>
+  {#if page == 'root' || page == 'story'}
     <div class="lists">
       {#each $storiesQuery as column (column.id)}
         <List {...column} />
       {/each}
     </div>
-  </main>
-{:else if page_value == 'project'}
-  <p>Project</p>
-{/if}
+  {:else if page == 'project'}
+    <p>Project</p>
+  {/if}
+</main>
