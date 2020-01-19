@@ -25,7 +25,7 @@
 
   r.init();
 
-  let columnsPromise = getStoriesAsync();
+  let columnsPromise = getStoriesAsync(true); //fake data
 </script>
 
 <style>
